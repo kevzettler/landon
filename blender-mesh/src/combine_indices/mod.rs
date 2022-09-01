@@ -56,7 +56,12 @@ impl BlenderMesh {
 
         // Important to calculate face tangents before we modify / weight the normals
         if config.calculate_face_tangents {
-            face_tangents = Some(self.calculate_face_tangents().unwrap());
+            match self.calculate_face_tangents() {
+                Ok(faces) => face_tangents = Some(faces),
+                Err(e) => {
+                    eprintln!("calculate_face_tangents error {}", e)
+                }
+            }
         }
 
         let multi = &self.multi_indexed_vertex_attributes;

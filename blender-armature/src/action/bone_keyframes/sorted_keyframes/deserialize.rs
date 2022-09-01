@@ -1,6 +1,6 @@
 use std::fmt;
 
-use serde::de::{self, SeqAccess, Visitor};
+use serde::de::{SeqAccess, Visitor};
 use serde::{Deserialize, Deserializer};
 
 use super::SortedKeyframes;

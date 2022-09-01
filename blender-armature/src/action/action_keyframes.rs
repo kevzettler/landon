@@ -63,13 +63,7 @@ impl ActionKeyframes {
     }
 }
 
-impl ActionKeyframes {
-    /// We use crate visibility to prevent users from being able to modify keyframes without
-    /// updating the cached smallest/largest frame number.
-    pub(crate) fn keyframes_mut(&mut self) -> &mut Vec<Keyframe> {
-        &mut self.keyframes
-    }
-}
+impl ActionKeyframes {}
 
 impl Deref for ActionKeyframes {
     type Target = Vec<Keyframe>;

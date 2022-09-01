@@ -23,23 +23,29 @@ impl BlenderMesh {
             .vertices_in_each_face
             .iter()
         {
-            triangulated_position_indices.push(indices[face_pointer]);
-            triangulated_position_indices.push(indices[face_pointer + 1]);
-            triangulated_position_indices.push(indices[face_pointer + 2]);
-
-            triangulated_face_vertex_counts.push(3);
-
             match num_verts_in_face {
-                &3 => {}
-                &4 => {
+                &3 => {
                     triangulated_position_indices.push(indices[face_pointer]);
+                    triangulated_position_indices.push(indices[face_pointer + 1]);
                     triangulated_position_indices.push(indices[face_pointer + 2]);
-                    triangulated_position_indices.push(indices[face_pointer + 3]);
 
                     triangulated_face_vertex_counts.push(3);
                 }
+                &4 => {
+                    triangulated_position_indices.push(indices[face_pointer]);
+                    triangulated_position_indices.push(indices[face_pointer + 1]);
+                    triangulated_position_indices.push(indices[face_pointer + 2]);
+                    triangulated_face_vertex_counts.push(3);
+
+                    triangulated_position_indices.push(indices[face_pointer]);
+                    triangulated_position_indices.push(indices[face_pointer + 2]);
+                    triangulated_position_indices.push(indices[face_pointer + 3]);
+                    triangulated_face_vertex_counts.push(3);
+                }
+                &5 => {}
+                /// do nothing??
                 _ => {
-                    panic!("blender-mesh currently only supports triangulating faces with 3 or 4 vertices");
+                    panic!("blender-mesh currently only supports triangulating faces with 3 or 4 vertices. found {}", num_verts_in_face);
                 }
             };
 

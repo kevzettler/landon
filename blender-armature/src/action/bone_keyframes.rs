@@ -18,7 +18,7 @@ mod sorted_keyframes;
 pub struct BoneKeyframes {
     frame_range_inclusive: Option<(u16, u16)>,
     #[serde(serialize_with = "serialize_hashmap_deterministic")]
-    keyframes: HashMap<u8, SortedKeyframes>,
+    pub keyframes: HashMap<u8, SortedKeyframes>,
 }
 
 impl BoneKeyframes {

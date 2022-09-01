@@ -24,6 +24,10 @@ impl SortedKeyframes {
     fn sort_ascending(&mut self) {
         self.0.sort_by(|a, b| a.frame().cmp(&b.frame()));
     }
+
+    pub fn iter(&self) -> impl Iterator<Item = &BoneKeyframe> {
+        self.0.iter()
+    }
 }
 
 impl SortedKeyframes {

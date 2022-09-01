@@ -278,7 +278,7 @@ impl BlenderArmature {
     /// dual quaternion linear blending.
     pub fn matrices_to_dual_quats(&mut self) {
         for (_, keyframes) in self.bone_space_actions.iter_mut() {
-            for (bone_idx, keyframes) in keyframes.keyframes_mut().iter_mut() {
+            for (_bone_idx, keyframes) in keyframes.keyframes_mut().iter_mut() {
                 for bone_keyframe in keyframes.iter_mut() {
                     bone_keyframe
                         .set_bone(BlenderArmature::matrix_to_dual_quat(&bone_keyframe.bone()));
@@ -331,7 +331,7 @@ impl BlenderArmature {
     pub fn apply_inverse_bind_poses(&mut self) {
         for (_name, action) in self.bone_space_actions.iter_mut() {
             for (bone_idx, keyframe) in action.keyframes_mut().iter_mut() {
-                for (index, bone) in keyframe.iter_mut().enumerate() {
+                for (_index, bone) in keyframe.iter_mut().enumerate() {
                     bone.bone_mut()
                         .multiply(self.inverse_bind_poses[*bone_idx as usize]);
                 }

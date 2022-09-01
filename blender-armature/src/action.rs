@@ -2,7 +2,6 @@ use std::collections::HashMap;
 
 pub use self::action_keyframes::*;
 pub use self::bone_keyframes::*;
-use crate::Keyframe;
 
 type Frame = u16;
 

@@ -42,7 +42,7 @@ pub fn blend_towards_bones(
 pub fn interpolate_bone(start_bone: Bone, end_bone: Bone, amount: f32) -> Bone {
     match start_bone {
         Bone::DualQuat(start) => match end_bone {
-            Bone::DualQuat(mut end) => Bone::DualQuat(interpolate_dual_quats(start, end, amount)),
+            Bone::DualQuat(end) => Bone::DualQuat(interpolate_dual_quats(start, end, amount)),
             _ => panic!(
                 r#"You may only interpolate bones of the same type. Please convert
 your end bone into a dual quaternion before interpolating"#

@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use crate::{interpolate_bone, ActionKeyframes, Bone};
+use crate::{ActionKeyframes, Bone};
 
 pub use self::joint_indices::*;
 pub use self::sample_desc::*;
@@ -12,7 +12,7 @@ mod surrounding_keyframes;
 
 impl ActionKeyframes {
     /// Sample the bone transforms from the action
-    pub fn sample(&self, joint_indices: &[u8], sample_desc: SampleDesc) -> BTreeMap<u8, Bone> {
+    pub fn sample(&self, _joint_indices: &[u8], _sample_desc: SampleDesc) -> BTreeMap<u8, Bone> {
         // let mut interpolated_bones = BTreeMap::new();
         //
         // if joint_indices.len() == 0 {

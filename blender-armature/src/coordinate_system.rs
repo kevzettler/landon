@@ -67,7 +67,7 @@ impl BlenderArmature {
                 }
 
                 for (_action_name, action) in self.bone_space_actions.iter_mut() {
-                    for (bone_idx, keyframes) in action.keyframes_mut() {
+                    for (_bone_idx, keyframes) in action.keyframes_mut() {
                         for bone_keyframe in keyframes.iter_mut() {
                             let bone = bone_keyframe.bone();
                             bone_keyframe.set_bone(dual_quat_z_up_right_to_y_up_right(bone));
